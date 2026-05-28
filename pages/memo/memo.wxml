@@ -17,7 +17,7 @@
         <text class="memo-time">{{item.createTime}}</text>
       </view>
       <view class="memo-actions">
-        <text class="delete-btn" bindtap="deleteMemo" data-id="{{item.id}}">删除</text>
+        <view class="delete-btn" bindtap="deleteMemo" data-id="{{item.id}}">删除</view>
       </view>
     </view>
   </scroll-view>
