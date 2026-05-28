@@ -63,7 +63,6 @@ Page({
   },
 
   deleteMemo(e) {
-    e.stopPropagation()
     const id = e.currentTarget.dataset.id
     
     wx.showModal({
