@@ -1,0 +1,41 @@
+<view class="container">
+  <view class="header">
+    <text class="title">备忘录</text>
+    <button class="add-btn" bindtap="addMemo">+ 添加</button>
+  </view>
+  
+  <scroll-view class="memo-list" scroll-y>
+    <view wx:if="{{memos.length === 0}}" class="empty-state">
+      <text class="empty-text">暂无备忘录</text>
+      <text class="empty-hint">点击右上角添加第一条备忘录</text>
+    </view>
+    
+    <view wx:for="{{memos}}" wx:key="id" class="memo-item" bindtap="editMemo" data-id="{{item.id}}">
+      <view class="memo-content">
+        <text class="memo-title">{{item.title || '无标题'}}</text>
+        <text class="memo-desc">{{item.content || '无内容'}}</text>
+        <text class="memo-time">{{item.createTime}}</text>
+      </view>
+      <view class="memo-actions">
+        <text class="delete-btn" bindtap="deleteMemo" data-id="{{item.id}}">删除</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <view wx:if="{{showModal}}" class="modal-overlay" bindtap="closeModal">
+    <view class="modal-content" catchtap="noop">
+      <view class="modal-header">
+        <text class="modal-title">{{editingId ? '编辑备忘录' : '新建备忘录'}}</text>
+        <text class="modal-close" bindtap="closeModal">×</text>
+      </view>
+      <view class="modal-body">
+        <input class="input-title" placeholder="请输入标题" value="{{formData.title}}" bindinput="onTitleInput" />
+        <textarea class="input-content" placeholder="请输入内容" value="{{formData.content}}" bindinput="onContentInput" />
+      </view>
+      <view class="modal-footer">
+        <button class="btn-cancel" bindtap="closeModal">取消</button>
+        <button class="btn-save" bindtap="saveMemo">保存</button>
+      </view>
+    </view>
+  </view>
+</view>
