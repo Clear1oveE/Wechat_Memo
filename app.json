@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/memo/memo",
     "pages/index/index",
     "pages/logs/logs"
   ],
